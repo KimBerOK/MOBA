@@ -12,6 +12,10 @@ UCLASS()
 class MOBA_API AMOBAGameMode : public AGameMode
 {
 	GENERATED_BODY()
+
+	AMOBAGameMode(const FObjectInitializer& ObjectInitializer);
+
+	virtual void StartPlay() override;
 	
 	
 	
