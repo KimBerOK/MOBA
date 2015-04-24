@@ -3,11 +3,12 @@
 #include "MOBA.h"
 #include "MOBAGameMode.h"
 #include "Engine.h"
+#include "MOBACharacter.h"
 
 AMOBAGameMode::AMOBAGameMode(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-
+	DefaultPawnClass = AMOBACharacter::StaticClass();
 }
 
 void AMOBAGameMode::StartPlay()

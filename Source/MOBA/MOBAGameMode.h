@@ -17,7 +17,4 @@ class MOBA_API AMOBAGameMode : public AGameMode
 
 	virtual void StartPlay() override;
 	
-	
-	
-	
 };
