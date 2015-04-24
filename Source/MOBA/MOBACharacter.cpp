@@ -34,6 +34,37 @@ void AMOBACharacter::Tick( float DeltaTime )
 void AMOBACharacter::SetupPlayerInputComponent(class UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
+	// set up gameplay key bindings
+	InputComponent->BindAxis("MoveForward", this, &AMOBACharacter::MoveForward);
+	InputComponent->BindAxis("MoveRight", this, &AMOBACharacter::MoveRight);
 
 }
 
+void AMOBACharacter::MoveForward(float Value)
+{
+	if ((Controller != NULL) && (Value != 0.0f))
+	{
+		//find out which way is forward
+		FRotator Rotation = Controller->GetControlRotation();
+		//limit pitch when walking or falling
+		if (GetCharacterMovement()->IsMovingOnGround() || GetCharacterMovement()->IsFalling())
+		{
+			Rotation.Pitch = 0.0f;
+		}
+		//add movement in that direction
+		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::X);
+		AddMovementInput(Direction, Value);
+	}
+}
+
+void AMOBACharacter::MoveRight(float Value)
+{
+	if ((Controller != NULL) && (Value != 0.0f))
+	{
+		//find out which way is right
+		const FRotator Rotation = Controller->GetControlRotation();
+		const FVector Direction = FRotationMatrix(Rotation).GetScaledAxis(EAxis::Y);
+		//add movement in that direction
+		AddMovementInput(Direction, Value);
+	}
+}

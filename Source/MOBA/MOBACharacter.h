@@ -9,6 +9,15 @@ UCLASS()
 class MOBA_API AMOBACharacter : public ACharacter
 {
 	GENERATED_BODY()
+protected:
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+		//handles moving forward/backward
+	UFUNCTION()
+		void MoveForward(float Val);
+		//handles strafing
+	UFUNCTION()
+		void MoveRight(float Val);
 
 public:
 	// Sets default values for this character's properties
@@ -20,9 +29,5 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
-	
-	
 };
