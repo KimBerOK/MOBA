@@ -38,9 +38,14 @@ void AMOBACharacter::SetupPlayerInputComponent(class UInputComponent* InputCompo
 	InputComponent->BindAxis("MoveForward", this, &AMOBACharacter::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMOBACharacter::MoveRight);
 
+	// Jump gameplay key bindings
+	InputComponent->BindAction("Jump", IE_Pressed, this, &AMOBACharacter::OnStartJump);
+	InputComponent->BindAction("Jump", IE_Released, this, &AMOBACharacter::OnStopJump);
+
 	// mouse camera control
 	InputComponent->BindAxis("Turn", this, &AMOBACharacter::AddControllerYawInput);
 	InputComponent->BindAxis("LookUp", this, &AMOBACharacter::AddControllerPitchInput);
+
 }
 
 void AMOBACharacter::MoveForward(float Value)
@@ -70,4 +75,14 @@ void AMOBACharacter::MoveRight(float Value)
 		//add movement in that direction
 		AddMovementInput(Direction, Value);
 	}
+}
+
+void AMOBACharacter::OnStartJump()
+{
+	bPressedJump = true;
+}
+
+void AMOBACharacter::OnStopJump()
+{
+	bPressedJump = false;
 }
