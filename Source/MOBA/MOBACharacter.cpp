@@ -38,6 +38,9 @@ void AMOBACharacter::SetupPlayerInputComponent(class UInputComponent* InputCompo
 	InputComponent->BindAxis("MoveForward", this, &AMOBACharacter::MoveForward);
 	InputComponent->BindAxis("MoveRight", this, &AMOBACharacter::MoveRight);
 
+	// mouse camera control
+	InputComponent->BindAxis("Turn", this, &AMOBACharacter::AddControllerYawInput);
+	InputComponent->BindAxis("LookUp", this, &AMOBACharacter::AddControllerPitchInput);
 }
 
 void AMOBACharacter::MoveForward(float Value)
