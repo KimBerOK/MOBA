@@ -8,7 +8,12 @@
 AMOBAGameMode::AMOBAGameMode(const FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
-	DefaultPawnClass = AMOBACharacter::StaticClass();
+	// Set default pawn class to our Blueprinted character
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnObject(TEXT("Pawn'/Game/Blueprints/BP_MOBACharacter.BP_MOBACharacter_C'"));
+	if (PlayerPawnObject.Class != NULL)
+	{
+		DefaultPawnClass = PlayerPawnObject.Class;
+	}
 }
 
 void AMOBAGameMode::StartPlay()
