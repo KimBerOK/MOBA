@@ -12,6 +12,20 @@ AMOBACharacter::AMOBACharacter()
 
 }
 
+// CameraComponent create and attach it to the CapsuleComponent
+AMOBACharacter::AMOBACharacter(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+	// Create a CameraComponent
+	FirstPersonCameraComponent = ObjectInitializer.CreateDefaultSubobject<UCameraComponent>(this, TEXT("FirstPersonCamera"));
+	FirstPersonCameraComponent->AttachParent = CapsuleComponent;
+
+	// Position the camera a bit above eyes
+	FirstPersonCameraComponent->RelativeLocation = FVector(0, 0, 50.0f + BaseEyeHeight);
+	// Allow the pawn to control rotation.
+	FirstPersonCameraComponent->bUsePawnControlRotation = true;
+}
+
 // Called when the game starts or when spawned
 void AMOBACharacter::BeginPlay()
 {

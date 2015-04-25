@@ -39,5 +39,11 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
+	// First Person camera
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+		UCameraComponent* FirstPersonCameraComponent;
+
+	// Constructor for AMOBACharacter
+	AMOBACharacter(const FObjectInitializer& ObjectInitializer);
 
 };
