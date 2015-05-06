@@ -18,7 +18,7 @@ AMOBACharacter::AMOBACharacter(const FObjectInitializer& ObjectInitializer)
 {
 	// Create a CameraComponent
 	FirstPersonCameraComponent = ObjectInitializer.CreateDefaultSubobject<UCameraComponent>(this, TEXT("FirstPersonCamera"));
-	FirstPersonCameraComponent->AttachParent = CapsuleComponent;
+	FirstPersonCameraComponent->AttachParent = GetCapsuleComponent();
 
 	// Position the camera a bit above eyes
 	FirstPersonCameraComponent->RelativeLocation = FVector(0, 0, 50.0f + BaseEyeHeight);
