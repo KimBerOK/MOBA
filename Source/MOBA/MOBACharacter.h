@@ -46,4 +46,13 @@ public:
 	// Constructor for AMOBACharacter
 	AMOBACharacter(const FObjectInitializer& ObjectInitializer);
 
+
+	/******************************
+	***        TARGETING       ****
+	******************************/
+
+	/* Is player aiming down sights */
+	UFUNCTION(BlueprintCallable, Category = "Targeting")
+		bool IsTargeting() const;
+
 };
