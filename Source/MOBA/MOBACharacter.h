@@ -55,4 +55,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Targeting")
 		bool IsTargeting() const;
 
+	/* ???For what???*/
+	UPROPERTY(Transient, Replicated)
+		bool bIsTargeting;
+
 };

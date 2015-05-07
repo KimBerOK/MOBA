@@ -100,3 +100,12 @@ void AMOBACharacter::OnStopJump()
 {
 	bPressedJump = false;
 }
+
+/**********************
+***    TARGETING    ***
+**********************/
+
+bool AMOBACharacter::IsTargeting() const
+{
+	return bIsTargeting;
+}
