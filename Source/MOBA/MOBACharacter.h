@@ -25,7 +25,7 @@ public:
 
 	// First Person camera
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-		UCameraComponent* FirstPersonCameraComponent;
+		UCameraComponent* CameraComp;
 
 	// Constructor for AMOBACharacter
 	AMOBACharacter(const FObjectInitializer& ObjectInitializer);
